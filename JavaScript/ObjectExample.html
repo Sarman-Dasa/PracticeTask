@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Example</title>
+</head>
+<body>
+    <script>
+        function CreateCourse(title)
+        {
+            return{
+                title : title,
+                section : 3,
+                notes:{
+                    intru :"log msg"
+                },
+                enroll()
+                {
+                    console.log('done')
+                }
+
+            }
+        }
+        const course = CreateCourse('javascript');
+        course.enroll();
+      document.write(course.title);
+    </script>
+</body>
+</html>
