@@ -1,0 +1,45 @@
+.bg-con
+{
+    /* background-image: url('../images/back_img.jpg');
+    background-size: cover; */
+    background-color: #000;
+    height: 50%;
+    padding: 20px 0px;
+    color: #fff;
+
+}
+.bg-con h1
+{
+    font-size: 500%;    
+}
+.bg-con a{
+    border: 2px;
+}
+.img
+{
+    padding: 10%;
+}
+nav a:hover
+{
+    background-color: green !important;
+    padding: 20px 30px !important;
+    margin:  0px 30px;
+    transform: scale(1.5);
+}
+.my-nav ul
+{
+    list-style-image: url('../images/task.png');
+}
+.my-nav ul li
+{
+    padding: 10px;
+}
+.my-nav ul li a{
+    text-decoration: none;
+    font-size: 18px;
+}
+.bg-con p
+{
+    padding: 20px 20px;
+}
+
