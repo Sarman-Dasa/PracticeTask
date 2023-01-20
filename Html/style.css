@@ -1,0 +1,36 @@
+table
+{
+    margin-left: 40%;
+    margin-top: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ebebfa;
+    border-width: 10px;
+    border: 10px;
+    border-radius: 10px;
+    border-color: black;
+}
+table td{
+    padding-top: 10px;
+    font-style: italic;
+}
+table th{
+    margin-top: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: aqua;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+input[type='submit']
+{
+    background: #2f2f2f;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size:small;
+    padding: 10px;
+    border-radius: 10px;
+}
