@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Method Example</title>
+</head>
+<body>
+    <h1>Before</h1>
+    <p id="before"></p>
+    <h1>After</h1>
+    <p id="after"></p>
+    <script>
+        const cars = ['THAR','BMW','CRETA','TATA PUNCH','SWIFT'];
+        document.getElementById('before').innerHTML = cars;
+        document.getElementById('after').innerHTML = cars.join(" * ");
+
+        // Add Element of Array
+
+        document.getElementById('before').innerHTML = cars;
+        console.log( cars.push("FOND")); //return length of array
+        document.getElementById('after').innerHTML = cars;
+
+
+        //Remove Element
+        document.getElementById('before').innerHTML = cars;
+        cars.pop();
+        document.getElementById('after').innerHTML = cars;
+
+        //remove first Element of Array  using shift()
+
+        document.getElementById('before').innerHTML = cars;
+        console.log( cars.shift()); // Return remove element of an Array (THAR)
+        document.getElementById('after').innerHTML = cars;
+
+        //Add Element of beginnig of An Arrau unshift
+
+        document.getElementById('before').innerHTML = cars;
+        console.log( cars.unshift("AUDI")); // Return length of element
+        document.getElementById('after').innerHTML = cars;
+
+        // concate two array
+
+        const year = ['2020','2021','2022'];
+        document.getElementById('before').innerHTML = cars;
+        const newArray = cars.concat(year);
+        document.getElementById('after').innerHTML = newArray;
+
+        // Splicing an array
+
+        // document.getElementById('before').innerHTML = cars;
+        // console.log(cars.splice(2,0,'harrier','thar'))
+        // document.getElementById('after').innerHTML = cars;
+
+
+        //slice an array
+        document.getElementById('before').innerHTML = cars;
+        console.log(cars.slice(1)); // it is create new array no any change to array
+        document.getElementById('after').innerHTML = cars.slice(1);
+
+        //sort array
+
+        document.getElementById('before').innerHTML = cars;
+        console.log("Sort ::"+cars.sort()); // sort array
+        document.getElementById('after').innerHTML = cars;
+
+
+        document.getElementById('before').innerHTML = cars;
+        console.log("Sort ::"+cars.reverse()); // sort array
+        document.getElementById('after').innerHTML = cars;
+
+
+        const marks = [45,100,56,78,46,34];
+        document.getElementById('before').innerHTML = marks;
+       console.table(marks.sort(function(a,b){return a - b}));
+        document.getElementById('after').innerHTML = marks;
+
+        marks.forEach(element => {
+            console.table(element)
+        });
+
+        //map : This example multiplies each array value by 2:
+
+        const  newdata = marks.map(myFunction)
+        function myFunction(value,index,array)
+        {
+            return value * 2;
+        }
+
+        document.getElementById('after').innerHTML = newdata;
+        
+        
+        // newdata = marks.filter(myFunction1)
+        // document.getElementById('after').innerHTML = newdata;
+        // function myFunction1(value,index,array)
+        // {
+        //     return value > 40;
+        // }
+
+        
+        let sum = marks.reduce(myFunction3)
+        document.getElementById('after').innerHTML = sum;
+        function myFunction3(total, value,index,array)
+        {
+            return total+value;
+        }
+
+
+    </script>
+</body>
+</html>
