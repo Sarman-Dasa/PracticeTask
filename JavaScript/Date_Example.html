@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Examples</title>
+</head>
+<body>
+    <p id="date">fgdhgh</p>
+    <p class="dt"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date('2023-01-22');
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(2010,11,30,2,30,0,0); // 7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(2009,10,25,10,00); // 5 numbers specify year, month, day, hour, and minute:
+        document.getElementById('date').innerHTML = d;
+
+
+        d = new Date(2010,10,25,22); // 4 numbers specify year, month, day and hour
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(2013,10,25,22);  //3 numbers specify year, month, and day
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(2022,09) // 2 number specify year , month
+        document.getElementById('date').innerHTML = d;
+
+        // if you are provide two digit into year it's consider 19's year
+
+        d = new Date(90,09);
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(01,09);
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date();
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(100000000000); //  01 January 1970 plus 100000000000 milliseconds 
+        document.getElementById('date').innerHTML = d;
+
+        d = new Date(24 * 60 * 60 * 1000); //  86400000
+        document.getElementById('date').innerHTML = d;
+
+        //Date Display in prople Formate
+
+        d = new Date();
+        document.getElementById('date').innerHTML = d.toDateString();
+        document.getElementById('date').innerHTML = d.toUTCString();
+
+        // get Year 
+        document.getElementById('date').innerHTML = d.getFullYear();    
+
+        // get Month
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.getElementById('date').innerHTML = months[d.getMonth()] // Month start with 0-11 
+        //document.getElementById('date').innerHTML = d.getMonth()+1; // Month start with 0-11 
+
+
+        //document.getElementById('date').innerHTML = d.getHours()+ " : " + d.getMinutes();
+
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        document.getElementById('date').innerHTML = days[d.getDay()]; // day index start with 0-6 (0 = sunday .....6 = Saturday)
+        
+
+    </script>
+</body>
+</html>
