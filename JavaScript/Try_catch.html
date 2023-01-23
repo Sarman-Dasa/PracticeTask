@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try catch</title>
+  </head>
+  <body>
+    <table border="1" align="center">
+      <tr>
+        <td>Enter Your age</td>
+        <td>
+          <input type="text" name="userAge" id="userAge"  max="100"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="check" id="check" onclick="checkAge()" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p id="output" style="display: none;"></p>
+        </td>
+      </tr>
+    </table>
+    <script>
+      // if myfunction is not declear they throw error
+      try
+      {
+          myfunction("Hello");
+      }
+      catch(err)
+      {
+          console.error(err.message)
+      }
+
+      //Custome Error message Throw using html form input
+    function checkAge()
+    {
+        var age  = document.getElementById('userAge').value;
+        var output = document.getElementById('output');
+        output.innerHTML = "";
+        try
+        {
+            if (age.trim()=="") {
+            throw "Empty input";
+            }
+            else if (isNaN(age)) {
+                throw "Not A Number"
+            }
+            else if(age>18)
+                throw "yes age is greter than 18";
+            else if(age<18)
+                throw "not a age is greter than 18";
+        }
+        catch(err)
+        {
+            output.style.display = "block";
+            output.innerHTML = err;
+        }
+        finally // Finally Block are execude every time 
+        {
+            document.getElementById('userAge').value = " "
+           
+        }
+    }
+    </script>
+  </body>
+</html>
