@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Promise Example </title>
+</head>
+<body>
+
+    <p id="output"></p>
+    <script>
+
+        // Basic Example 
+        var output = document.getElementById('output');
+        let condition  = true;
+        let prom  = new Promise(function(resolve,reject)
+        {
+            if(condition)
+                resolve("Successfully...");
+            else
+                reject("failed");
+        });
+       // output.innerHTML = "Done";
+        console.log(prom)
+    </script>
+</body>
+</html>
