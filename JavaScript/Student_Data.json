@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "Dasa Sarman",
+        "age"  : "21",
+        "city" : "Porbandar"
+    },
+    {
+        "name" : "Gorsera Dilip",
+        "age"  : "21",
+        "city" : "Ahmedabad"
+    },
+    {
+        "name" : "Kuchhadiya Karan",
+        "age"  : "22",
+        "city" : "Surat"
+    },
+    {
+        "name" : "Odedara Jayesh",
+        "age"  : "21",
+        "city" : "RanaVav"
+    }
+]
