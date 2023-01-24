@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Example 3</title>
+</head>
+<body>
+    <script>
+        // check student pass or not
+        // function status(per)
+        // {
+        //     return new Promise(function(resolve,reject)
+        //     {
+        //         if(per>33)
+        //             resolve("pass");
+        //         else
+        //             reject("Failed");
+        //     });
+        // }
+
+        // with setTimeOut Function
+        function status(per)
+        {
+            return new Promise(function(resolve,reject)
+            {
+                console.log('Fetching Data !! Please Wait');
+                setTimeout(()=>{
+                    if(per>33)
+                        resolve("pass");
+                    else
+                        reject("Failed");
+               },3000)   
+            });
+        }
+
+        
+         // 1st way
+
+        let onfulfilment = (result) =>{
+                console.log(result)
+        }
+        let onRejection = (error) => {
+                console.log(error);
+        }
+        var per = prompt("Enter Your percentage :")
+        //status(per).then(onfulfilment);
+       // status(per).catch(onRejection);
+        //status(per).then(onfulfilment).then(onRejection)
+
+          // 2st way
+          status(per).then((result) =>{
+                console.log(result)}).then((error) =>{
+                console.log(error)})
+    </script>
+</body>
+</html>
