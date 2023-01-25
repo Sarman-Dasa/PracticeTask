@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Data From Server</title>
+</head>
+<body>
+        <p id="output"></p>
+
+        <script>
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.onload = function()
+            {
+                const obj = JSON.parse(this.responseText);
+                let output = "<table border='1' align='center'>";
+                    output+= "<tr><th colspan='3'> JSON DATA IN TABLE</th></tr>";
+                    output+= "<tr>";
+                            output+="<th>id</th>";
+                            output+="<th>title</th>";
+                            output+="<th>completed</th>";
+                        output+="</tr>";
+                    for(let i in obj)
+                    {
+                        output+= "<tr>";
+                            output+="<td>" + obj[i].id +"</td>";
+                            output+="<td>" + obj[i].title +"</td>";
+                            output+="<td>" + obj[i].completed +"</td>";
+                        output+="</tr>";
+                    }
+                    output+="</table>";
+                    document.getElementById('output').innerHTML = output;
+            };
+
+            xhttp.open('GET','/../AJAX/AjaxData.txt',true);
+            xhttp.send();
+        </script>
+</body>
+</html>
