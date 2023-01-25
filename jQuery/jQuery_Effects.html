@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Effects</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // fadeIn()
+            $('#fadein').click(function()
+            {
+                $('#div1').fadeIn();
+                $('#div2').fadeIn('slow');
+                $('#div3').fadeIn(3000);
+            });
+
+            // fadeout()
+            $('#fadeout').click(function()
+            {
+                $('#div1').fadeOut();
+                $('#div2').fadeOut('slow');
+                $('#div3').fadeOut(3000);
+            });
+            //fadetoggle
+            $('#fadeToggle').click(function()
+            {
+                $('#div1').fadeToggle();
+                $('#div2').fadeToggle('slow');
+                $('#div3').fadeToggle(3000);
+            });
+            $('#div3').click(function()
+            {
+                $('#panel').slideDown(1000);
+                $('#div2').text('Click slide up')
+            });
+            $('#div2').click(function()
+            {
+                $('#panel').slideUp(1000);
+
+            });
+            $('#div1').click(function()
+            {
+                $('#panel').toggle(1000);
+
+            });
+            $('#animation').click(function()
+            {
+                $('#div4').animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    heigth : '500px',
+                    width : '200px'
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--  jQuery Effects  -->
+    <button type="button" id="fadein"> Click to fade in</button>
+    <button type="button" id="fadeout"> Click to fade out</button> 
+    <button type="button" id="fadeToggle"> Click to fadeToggle</button> 
+    <button type="button" id="animation"> Start Animation</button> 
+     <br><br>
+    <div id="div1" style="width:150px;height:80px;display:none;background-color:red;">Slide Toggle</div><br>
+    <div id="div2" style="width:150px;height:80px;display:none;background-color:green;"></div><br>
+    <div id="div3" style="width:150px;height:40px;display:none;background-color:blue;">Click slide down</div>
+    <div id="panel" style="display: none;text-align: left;width:150px;height:40px;display:none;background-color:blue;">Hello world!</div>
+    <div id="div4" style="width:150px;height:80px;background-color:green;position:absolute;"></div><br>
+    </body>
+</html>
