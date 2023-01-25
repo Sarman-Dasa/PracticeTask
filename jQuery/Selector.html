@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $('#list').css("border","2px solid green") // id selector
+            $('#list li').css("color","red"); // inner
+            $('ul li').css('font-size','16px') // parent Chilld
+            $('ul li:last').css('color','black'); // first last
+            $('p').css('color','blue') // tag selector
+            $('.test').css("border","2px solid red") // class selector
+
+            $('#hide_show').click(function(){
+                $('#list').toggle(1000); // hide show list with 1 second delay animantion
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Selector Example</h1>
+
+    <div id="main" class="test">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium sit 
+            itaque fugiat minima ipsam vero, ipsum voluptatum hic nemo quas.</p>
+
+        <ul id="list">
+            <li>THAR</li>
+            <li>BMW</li>
+            <li>CRETA</li>
+            <li>FOND</li>
+        </ul>
+        <button type="button" id="hide_show">List Hide/Show </button>
+    </div>
+</body>
+</html>
