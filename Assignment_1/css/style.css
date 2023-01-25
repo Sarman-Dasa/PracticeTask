@@ -1,0 +1,9 @@
+textarea
+{
+    resize: none;
+}
+span
+{
+    color: red;
+    font-size: 12px;
+}
