@@ -8,10 +8,24 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
-        $(document).ready
+        $(document).ready(function(){
+            // Paragraph data hide
+            $('#hide').click(function(){
+                $('#data').hide();
+            });
+            
+            //data show
+
+            $('#show').click(function(){
+                $('#data').show();
+            });
+
+        });
     </script>
 </head>
 <body>
-    
+    <p id="data">Click on Hide button To Hide data</p>
+    <button type="button" id="hide">HIDE</button>
+    <button type="button" id="show">SHOW</button>
 </body>
 </html>
