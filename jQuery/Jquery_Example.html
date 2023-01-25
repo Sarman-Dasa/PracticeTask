@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JQuery Example</title>
-
+    <title>jquery Example</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
-        $(document).ready
+        $(document).ready(function(){
+            var data = $('#data').html();
+            console.log(data)
+        });
     </script>
 </head>
 <body>
-    
+    <p id="data">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, nobis?
+    </p>
 </body>
 </html>
