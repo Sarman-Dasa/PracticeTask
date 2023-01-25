@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get and Set CSS Classes example</title>
+    <style>
+        .myclass
+        {
+            color: red;
+            font-size: 18px;
+
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            // Add Class
+            $('#change1').click(function()
+            {
+                $('#add').addClass('myclass');
+            });
+
+            //Remove Class
+
+            $('#change2').click(function()
+            {
+                $('#remove').removeClass('myclass');
+            });
+
+            $('#change3').click(function()
+            {
+                $('#remove,#add').toggleClass('myclass');
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <p id="add"> Set Css Classes</p>
+    <p id="remove" class="myclass">remove Css Classes</p>
+    <button id="change1">Change Css</button>
+    <button id="change2">remove Css</button>
+    <button id="change3">Add/Remove css</button>
+</body>
+</html>
