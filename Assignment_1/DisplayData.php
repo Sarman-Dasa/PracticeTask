@@ -33,8 +33,9 @@ $result = mysqli_query($con, $query);
                             <td><?php echo $row[0] ?></td>
                             <td><?php echo $row[1] ?></td>
                             <td><?php echo $row[2] ?></td>
-                            <td><?php echo "<a href='Index.php?id=$row[0]'>EDIT</a>" ?>
-                           <?php echo "<a href='Index.php?id=$row[0]'>DELETE</a>" ?></td>
+                         
+                            <td><?php echo "<button id='delete_ID' data-id='{$row[0]}'>Delete</button>" ?>
+                           <?php echo "<a href='DeleteData.php?id=$row[0]' id='deleteID'>DELETE</a>" ?></td>
                         </tr>
                     <?php
                 }
@@ -44,6 +45,31 @@ $result = mysqli_query($con, $query);
             ?>
         </table>
     </div>
+    <script>
+       
+            $(document).on("click","#delete_ID",function(e)
+            {
+               if(confirm("Do you want to Delete This Record")){
+                var title_id = $(this).data("id"); 
+                var element = this;
+                $.ajax({
+                    url : 'DeleteData.php',
+                    type : "POST",
+                    data : {id:title_id},
+                    success: function(data){
+                      if(data==1)
+                      {
+                        $(element).closest("tr").fadeOut(1000); // Just Remove a tr // table can not refrech so design remove
+                      }
+                      else{
+                        
+                      }
+                    }
+                });
+               }
+            })
+      
+    </script>
 </body>
 
 </html>
