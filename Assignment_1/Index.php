@@ -12,7 +12,8 @@
         {
             let key = event.which;
             const errorMsg = document.getElementById('TitleError');
-            if(key>=47 && key<=57)
+       
+            if((key>=47 && key<=57) || (key>=33 && key<=46) || (key>=58 && key<=64) || (key>=91 && key<95 || key==96) || (key>=123 && key<=126))
             {
               errorMsg.innerHTML = "Invalid Input!!!"
             }
@@ -82,7 +83,7 @@
           </div>
           <div class="form-group">
             <label for="">Title</label>
-            <input type="text" id="titleId" class="form-control" onkeypress="checkData(event)" required/>
+            <input type="text" id="titleId" class="form-control" onkeypress="checkData(event)" pattern="^[a-zA-Z]+$" required/>
             <span id="TitleError"></span>
           </div>
           <div class="form-group">
