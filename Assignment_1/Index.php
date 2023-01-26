@@ -119,9 +119,8 @@
         $('#save').on("click",function(e)
         {
             e.preventDefault();
-            var f_title = $('#titleID').val();
+            var f_title = $('#titleId').val();
             var f_description = $('#descriptionID').val();
-
             $.ajax({
               url : "insert.php",
               type : "POST",
