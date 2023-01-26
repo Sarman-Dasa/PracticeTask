@@ -74,31 +74,65 @@
     </nav>
 
     <!-- Form Design Code -->
-
     <div class="container">
-      <form action="">
+      <form>
         <div class="table table-responsive col-lg-6">
           <div class="form-group text-center">
               <h3>TODO TABLE</h3>
           </div>
           <div class="form-group">
             <label for="">Title</label>
-            <input type="text" id="titleId" class="form-control" onkeypress="checkData(event)" pattern="^[a-zA-Z]+$" required/>
+            <input type="text" id="titleId" name="title" class="form-control" onkeypress="checkData(event)" required/>
             <span id="TitleError"></span>
           </div>
           <div class="form-group">
             <label for="">Description</label>
-           <textarea name="description" id="description" cols="10" rows="5" class="form-control" required></textarea>
+           <textarea name="description" id="descriptionID" name="description" cols="10" rows="5" class="form-control" required></textarea>
           </div>
           <div class="form-group">
-            <input type="submit" name="save" value="Sava Info" class="btn btn-info btn-block">
+            <input type="submit" name="save"  id="save" value="Sava Info" class="btn btn-info btn-block">
           </div>
         </div>
       </form>
     </div>
+    <div id="table-container">
 
+    </div>
     <script src="js/jquery.js"></script>
-
     <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function()
+      {
+          function loadData()
+          {
+            $.ajax({
+              url:"DisplayData.php",
+              type:"POSt",
+              success : function(data)
+              {
+                  $('#table-container').html(data)
+              }
+            });
+          }
+          loadData();
+
+        $('#save').on("click",function(e)
+        {
+            e.preventDefault();
+            var f_title = $('#titleID').val();
+            var f_description = $('#descriptionID').val();
+
+            $.ajax({
+              url : "insert.php",
+              type : "POST",
+              data : {title:f_title,description:f_description},
+              success : function(data)
+              {
+                loadData();
+              }
+            });
+        })
+      });
+    </script>
   </body>
 </html>
