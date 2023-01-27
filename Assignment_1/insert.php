@@ -10,7 +10,11 @@
        $query = "insert into TODU_TBL values(null,'$title','$description')";
        if(mysqli_query($con,$query))
        {
-        
+           echo 1;
+       }
+       else
+       {
+           echo 0;
        }
     //}
 ?>
