@@ -3,7 +3,7 @@
 
     $id = $_POST['id'];
 
-    $query = "delete from TODU_TBL where id = $id";
+    $query = "delete from todutbl where id = $id";
 
     if(mysqli_query($con,$query))
     {
