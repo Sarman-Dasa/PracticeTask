@@ -7,7 +7,7 @@
         $description = $_POST['description'];
        // echo "$title"." $description";
 
-       $query = "insert into TODU_TBL values(null,'$title','$description')";
+       $query = "insert into todutbl values(null,'$title','$description')";
        if(mysqli_query($con,$query))
        {
            echo 1;
