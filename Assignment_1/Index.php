@@ -1,6 +1,6 @@
 <?php
-$id = $_GET['id'] ?? 0;
-include_once("Connction.php");
+// $id = $_GET['id'] ?? 0;
+// include_once("Connction.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,13 @@ include_once("Connction.php");
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TODO Table</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .btn-hide
+      {
+        display: none;
+      }
+    </style>
   <script>
     function checkData(event) {
       let key = event.which;
@@ -45,7 +51,7 @@ include_once("Connction.php");
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="Index.php">Add New Data</a></li>
-          <li><a href="#">Update</a></li>
+          <li><a href="backupTable.php" id="backuptable">backupData</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -68,39 +74,29 @@ include_once("Connction.php");
     <form id="myform">
       <?php
       // Get Data From DataBase base on Id and Fill to textbox
-      if ($id != 0) {
-        $query = "SELECT * FROM TODU_TBL WHERE id = $id";
-        $result = mysqli_query($con, $query);
-        $row = mysqli_fetch_array($result);
-      }
+     
       ?>
       <div class="table table-responsive col-lg-6">
 
         <div class="form-group text-center">
           <h3>TODO TABLE</h3>
         </div>
-        <div>
-          <p id="editTitleId"><?php echo $row[0] ?></p>
-        </div>
+       
         <div class="form-group">
+        <div>
+          <input type="hidden" name="hiddendid" id="editTitleId" value="id">
+        </div>
           <label for="">Title</label>
-          <input type="text" id="titleId" name="title" class="form-control" onkeypress="checkData(event)" required value="<?php echo $row[1] ?>" />
+          <input type="text" id="titleId" name="title" class="form-control" onkeypress="checkData(event)" required  />
           <span id="TitleError"></span>
         </div>
         <div class="form-group">
           <label for="">Description</label>
-          <textarea name="description" id="descriptionID" name="description" cols="10" rows="5" class="form-control" required> <?php echo $row[2] ?></textarea>
+          <textarea name="description" id="descriptionID" name="description" cols="10" rows="5" class="form-control" required></textarea>
         </div>
         <div class="form-group">
-          <?php
-          if ($id != 0) { ?>
-            <input type="submit" name="Update" id="update" value="Update Info" class="btn btn-info btn-block">
-          <?php } else {
-          ?>
-            <input type="submit" name="save" id="save" value="Save Info" class="btn btn-info btn-block">
-          <?php }
-          ?>
-
+            <input type="submit" name="insertdata" id="save" value="Save Info" class="btn btn-info btn-block">
+            <input type="submit" name="updatedata" id="update" value="Update Info" class="btn-hide">
         </div>
       </div>
     </form>
@@ -153,32 +149,53 @@ include_once("Connction.php");
         });
       })
 
+      //--------------- Fill Data //-------------------
+
+      $(document).on("click", "#editID", function(e) {
+          $('#update').show();
+          $('#update').addClass("btn btn-info btn-block")
+          $('#save').hide();
+          var title_id = $(this).data("id");
+          $('#editTitleId').val(title_id);
+          $.ajax({
+            url: 'UpdateData.php',
+            type: "POST",
+            data: {
+              id: title_id
+            },
+            success: function(data) {
+              console.log(data);
+              var r_Data = JSON.parse(data);
+              $("#titleId").val(r_Data.title);
+              $('#descriptionID').val(r_Data.description);
+            }
+          });
+        
+      })
+
       //---------------// Update Data Code //----------------------
       $('#update').on("click", function(e) {
         e.preventDefault();
         var f_title = $('#titleId').val();
         var f_description = $('#descriptionID').val();
-        var f_id = $('#editTitleId').text();
-
+        var f_id = $('#editTitleId').val();
+        //alert(f_id);
+        $('#update').hide();
+        $('#save').show();  
         $.ajax({
           url: "UpdateData.php",
           type: "POST",
           data: {
-            id: f_id,
+            editid: f_id,
             title: f_title,
             description: f_description
           },
           success: function(data) {
-            if (data == 1) {
+            
+           
               $("#myform").trigger('reset');
               loadData();
-              $('#editTitleId').text("")
-              //location.href = "Index.php";
-              //location.replace('index.php');
-              history.pushState("", "", "Index.php?id=0");
-            } else {
-              alert("Some Error");
-            }
+                       
           }
         });
       })
@@ -204,6 +221,57 @@ include_once("Connction.php");
           });
         }
       })
+
+      $(document).on("click","#softdelete_ID",function()
+      {
+          var softdeleteId = $(this).data("id");
+          // alert(softdeleteId);
+          $.ajax({
+            url : "softDelete.php",
+            type : "POST",
+            data : {id:softdeleteId},
+            success : function(data)
+            {
+              loadData();
+            }
+          });
+      });
+
+      // backup table filll
+
+      function backupData()
+      {
+        $.ajax({
+          url : "backupTable.php",
+          type : "POST",
+          success : function(data)
+          {
+            $("#table-container").html(data);
+          }
+        });
+      }
+
+      // open backup data table
+      $("#backuptable").on("click",function(e)
+      {
+        e.preventDefault();
+        backupData();
+      });
+
+      // restore data
+      $(document).on("click","#restore_id",function(){
+                var restoreid = $(this).data('id');
+             
+                $.ajax({
+                    url : "restoreData.php",
+                    type : "POST",
+                    data : {id:restoreid},
+                    success : function(data)
+                    {
+                      loadData();
+                    }
+                });
+            });
     });
   </script>
 </body>
