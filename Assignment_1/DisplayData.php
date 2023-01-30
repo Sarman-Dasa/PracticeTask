@@ -1,7 +1,7 @@
 <?php
 include_once('Connction.php');
 include_once('/../Assignment_1/css');
-    $query = "select * from TODU_TBL";
+    $query = "select * from todutbl where status = 1";
     $result = mysqli_query($con, $query);
 ?>
 <html>
@@ -39,12 +39,14 @@ include_once('/../Assignment_1/css');
                          
                             <td class="text-center">
                               
-                                <?php echo "<a href='index.php?id=$row[0]' id='editID'>
+                                <?php /* echo "<a href='index.php?id=$row[0]' id='editID'>
                                 <span class='btn-lg glyphicon glyphicon-pencil text-decoration-none' style='color:green;font-size:18px;'>
-                                </span></a>" ?> 
+                                </span></a>" */ ?> 
+                                 <?php  echo "<span id='editID' data-id='{$row[0]}' class='btn-lg glyphicon glyphicon-pencil text-decoration-none' style='color:green;font-size:18px;'>
+                                </span></a>"  ?> 
                                 <?php echo "<span id='delete_ID' data-id='{$row[0]}'  class='btn-lg glyphicon glyphicon-trash'></span>" ?>
-                                <?php echo "<span id='delete_ID' data-id='{$row[0]}' class='btn-lg glyphicon glyphicon-remove-sign' 
-                                data-toggle='tooltip' data-placement='top' title='Tooltip on top'></span>" ?>
+                                <?php echo "<span id='softdelete_ID' data-id='{$row[0]}' class='btn-lg glyphicon glyphicon-remove-sign' 
+                                data-toggle='tooltip' data-placement='top' title='Soft-Delete'></span>" ?>
                             </td>
                           <?php //echo "<button id='editID' data-id='{$row[0]}'> EDIT </button>" ?>
                         </tr>
